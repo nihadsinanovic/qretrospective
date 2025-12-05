@@ -1,66 +1,50 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-background text-foreground animate-in fade-in duration-500">
+      <main className="max-w-3xl text-center space-y-8">
+        <div className="space-y-4">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent pb-2">
+            Run Better Retrospectives
+          </h1>
+          <p className="text-xl text-muted max-w-xl mx-auto">
+            The simplest way to collaborate with your team. Stop, Start, and Keep doing what matters.
           </p>
         </div>
-        <div className={styles.ctas}>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
           <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/register"
+            className="btn btn-primary text-lg px-8 py-3 h-auto"
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+            Get Started
           </a>
           <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/login"
+            className="btn btn-secondary text-lg px-8 py-3 h-auto bg-card hover:bg-muted"
           >
-            Documentation
+            Log In
           </a>
         </div>
+
+        <div className="pt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+          <div className="card border-border/50 bg-card/50">
+            <h3 className="font-bold text-lg mb-2">Real-time Boards</h3>
+            <p className="text-sm text-muted">Collaborate instantly with your team. Updates appear as they happen.</p>
+          </div>
+          <div className="card border-border/50 bg-card/50">
+            <h3 className="font-bold text-lg mb-2">Team Management</h3>
+            <p className="text-sm text-muted">Organize projects by team and control access with roles.</p>
+          </div>
+          <div className="card border-border/50 bg-card/50">
+            <h3 className="font-bold text-lg mb-2">Simple Invites</h3>
+            <p className="text-sm text-muted">Invite colleagues via email links and get started in seconds.</p>
+          </div>
+        </div>
       </main>
+
+      <footer className="mt-24 text-sm text-muted">
+        Built with Next.js, Prisma, and ❤️
+      </footer>
     </div>
   );
 }
