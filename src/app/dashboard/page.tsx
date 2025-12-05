@@ -32,7 +32,7 @@ export default async function DashboardPage() {
     const projects = await getProjects()
 
     // Group by team
-    const projectsByTeam = projects.reduce((acc, project) => {
+    const projectsByTeam = projects.reduce((acc: Record<string, typeof projects>, project) => {
         const teamName = project.team.name
         if (!acc[teamName]) acc[teamName] = []
         acc[teamName].push(project)
