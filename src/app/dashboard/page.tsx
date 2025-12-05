@@ -31,13 +31,15 @@ export default async function DashboardPage() {
 
     const projects = await getProjects()
 
+    type ProjectWithTeam = typeof projects[number]
+
     // Group by team
-    const projectsByTeam = projects.reduce((acc: Record<string, typeof projects>, project) => {
+    const projectsByTeam = projects.reduce((acc: Record<string, ProjectWithTeam[]>, project: ProjectWithTeam) => {
         const teamName = project.team.name
         if (!acc[teamName]) acc[teamName] = []
         acc[teamName].push(project)
         return acc
-    }, {} as Record<string, typeof projects>)
+    }, {} as Record<string, ProjectWithTeam[]>)
 
     return (
         <div className="container py-8">
