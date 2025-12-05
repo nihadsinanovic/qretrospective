@@ -30,8 +30,11 @@ export default async function ProjectPage({ params }: { params: { id: string } }
 
     if (!project) notFound()
 
+    type ProjectMemberWithUser = typeof project.members[number]
+    type Retrospective = typeof project.retros[number]
+
     // Check access
-    const isMember = project.members.some(m => m.userId === session.user?.id)
+    const isMember = project.members.some((m: ProjectMemberWithUser) => m.userId === session.user?.id)
     if (!isMember) return <div className="p-8 text-center text-destructive">Access Denied</div>
 
     return (
@@ -56,7 +59,7 @@ export default async function ProjectPage({ params }: { params: { id: string } }
                         </div>
                     ) : (
                         <div className="grid gap-4">
-                            {project.retros.map(retro => (
+                            {project.retros.map((retro: Retrospective) => (
                                 <a key={retro.id} href={`/dashboard/project/${project.id}/retro/${retro.id}`} className="card hover:border-primary transition-colors flex justify-between items-center group">
                                     <div>
                                         <h3 className="font-bold">{retro.title}</h3>
@@ -80,7 +83,7 @@ export default async function ProjectPage({ params }: { params: { id: string } }
                     <div className="card mt-8">
                         <h2 className="font-bold text-lg mb-4">Members</h2>
                         <ul className="space-y-2">
-                            {project.members.map(member => (
+                            {project.members.map((member: ProjectMemberWithUser) => (
                                 <li key={member.id} className="flex items-center justify-between text-sm">
                                     <span>{member.user.name || member.user.email}</span>
                                     <span className="text-xs px-2 py-1 bg-muted rounded">{member.role}</span>
