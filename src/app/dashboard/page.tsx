@@ -60,7 +60,7 @@ export default async function DashboardPage() {
                             No projects found. Create one to get started.
                         </div>
                     ) : (
-                        Object.entries(projectsByTeam).map(([teamName, teamProjects]) => (
+                        (Object.entries(projectsByTeam) as [string, ProjectWithTeam[]][]).map(([teamName, teamProjects]) => (
                             <div key={teamName} className="mb-8">
                                 <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
                                     <span className="text-muted text-sm uppercase tracking-wide">Team</span> {teamName}
